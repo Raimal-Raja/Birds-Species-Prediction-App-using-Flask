@@ -1,52 +1,68 @@
-# Birds-Species-Prediction-App-using-Flask
+# Bird Species Classification — Flask Demo
 
 Flask image-classification demo that loads a Keras model and predicts among six bird species.
 
-## Setup and repository reference
+## Project focus
 
-### Project structure
+Flask application. The sections below separate the runnable entry point, source layout, prerequisites, and verification path.
 
-- [Procfile](Procfile)
-- [app](app)
-- [app.py](app.py)
-- [config.py](config.py)
-- [requirements.txt](requirements.txt)
-- [sample_data](sample_data)
+## Architecture
 
-### Getting started
+```mermaid
+flowchart TD
+    A["Flask interface: user input"] --> B["Input parsing and preprocessing"]
+    B --> C{"Model artifacts available?"}
+    C -->|Yes| D["Model inference"]
+    C -->|No| E["Supply compatible model files"]
+    D --> F["Prediction / completion output"]
+    E --> C
+```
+
+## Repository structure
+
+| Path | Purpose |
+| --- | --- |
+| [`Procfile`](Procfile) | Process-launch configuration. |
+| [`app.py`](app.py) | Application entry point or route definitions. |
+| [`app/`](app) | Application source; inspect this directory for the framework-specific implementation. |
+| [`config.py`](config.py) | Python application helper or learning example. |
+| [`requirements.txt`](requirements.txt) | Python dependency manifest. |
+| [`sample_data/`](sample_data) | Project-specific source, resources, or learning material. |
+
+## Getting started
 
 ```bash
 git clone https://github.com/Raimal-Raja/Birds-Species-Prediction-App-using-Flask.git
 cd Birds-Species-Prediction-App-using-Flask
 ```
 
-Create and activate a virtual environment, then install the project dependencies:
-
 ```bash
 python -m venv .venv
-# Linux/macOS: source .venv/bin/activate
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-python -m pip install -r "requirements.txt"
+source .venv/bin/activate
 ```
 
-Application entry point:
+On Windows PowerShell, activate the environment with `.venv\Scripts\Activate.ps1` instead.
+
+```bash
+python -m pip install -r requirements.txt
+```
 
 ```bash
 python app.py
 ```
 
-### Configuration and limitations
+## Configuration and scope
 
-Inference requires app/static/model/bird_species.h5 and its compatible Keras/TensorFlow environment. The trained model was not loaded in this review.
+The checked-in requirements describe a legacy Keras/NumPy stack. They are retained to avoid silently breaking saved-model compatibility; they are not a claim of compatibility with current Python. Reproducing the model requires a matching legacy environment or a separately tested migration. Inspect `app/views.py` for its expected model path.
 
-### Validation
+## Verification
 
-Recorded checks from the previous maintenance review (2026-10-08): 4 existing Python files passed syntax checks; changed files and new regression tests were checked separately. Syntax checks do not establish full runtime correctness. External APIs, live scraping, GUI interaction, notebook training and production deployment were not comprehensively exercised.
+Use the setup commands and inspect the selected interface, example, or notebook with known inputs. This documentation review checks repository paths and dependency declarations; it does not claim fresh end-to-end execution or model-quality measurements.
 
-### Contributions
+## Contributing
 
-Describe the issue, reproduction steps, environment, and expected behavior when proposing a change. Keep generated environments, credentials, and unnecessary build artifacts out of new commits.
+Include reproduction steps, the affected path, expected behavior, and the checks you ran. Keep credentials, generated environments, and unnecessary build artifacts out of commits.
 
-### License
+## License
 
-No top-level license file was found during this review.
+No top-level license file is currently tracked. Check reuse permissions with the repository owner.
